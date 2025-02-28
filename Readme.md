@@ -28,25 +28,25 @@ We use feature-based branching:
 - `feature/xxx` → A branch for each new feature (e.g., feature/authentication)
 
 ### **2 How to Work on a Feature**
-1. **Clone the repo**
+#### 1. **Clone the repo**
 ```bash
 git clone https://github.com/ZemaCoders/amazon-clone.git
 cd amazon-clone
 ```
-2. **Create a new feature branch**
+#### 2. **Create a new feature branch**
 ```bash
 git checkout -b feature/your-feature-name
 ```
-3. **Make changes and commit**
+#### 3. **Make changes and commit**
 ```bash
 git add .
 git commit -m "feat: added authentication with Passport.js"
 ```
-4. **Push your changes**
+#### 4. **Push your changes**
 ```bash
 git push origin feature/your-feature-name
 ```
-5. **Create a pull request (PR) to develop branch**
+#### 5. **Create a pull request (PR) to develop branch**
 
 ### **3 Commit Message Format**
 We follow a clear commit message convention:
