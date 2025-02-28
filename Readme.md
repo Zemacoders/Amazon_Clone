@@ -13,11 +13,11 @@ This is a collaborative Amazon Clone project led by Zema Coders to help junior d
 - MySQL (Relational Database)
 - Sequelize (ORM for MySQL)
 - Passport.js (Authentication)
-- Other Tools:
+### **Other Tools**:
 - Git & GitHub (Version Control)
 - Postman (API Testing)
 
-- 🌱 Git Workflow Rules
+### **Git Workflow Rules**
 - To ensure smooth collaboration, we follow a structured Git workflow:
 
 ### **1 Branching Strategy**
