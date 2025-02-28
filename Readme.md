@@ -30,8 +30,8 @@ We use feature-based branching:
 ### **2 How to Work on a Feature**
 #### 1. **Clone the repo**
 ```bash
-git clone https://github.com/ZemaCoders/amazon-clone.git
-cd amazon-clone
+git clone https://github.com/ZemaCoders/Amazon-Clone.git
+cd Amazon-Clone
 ```
 #### 2. **Create a new feature branch**
 ```bash
