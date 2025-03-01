@@ -13,5 +13,8 @@
   "keywords": [],
   "author": "Teklu",
   "license": "MIT",
-  "type": "commonjs"
+  "type": "commonjs",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
 }
