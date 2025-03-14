@@ -1,9 +1,7 @@
+import Routers from "./routers/Routers";
+
 function App() {
-  return (
-    <>
-      <h1 className="text-center text-4xl">Amazon Clone</h1>
-    </>
-  );
+  return <Routers/>
 }
 
 export default App;
