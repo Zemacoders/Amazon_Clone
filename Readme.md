@@ -11,7 +11,7 @@ This is a collaborative Amazon Clone project led by Zema Coders to help junior d
 ### Backend:
 - Node.js + Express.js (Server-side framework)
 - MySQL (Relational Database)
-- MySQL2 (For execuƟng raw SQL queries)
+- MySQL2 (For executng raw SQL queries)
 - Passport.js (Authentication)
 ### **Other Tools**:
 - Git & GitHub (Version Control)
