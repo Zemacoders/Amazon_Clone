@@ -11,7 +11,7 @@ This is a collaborative Amazon Clone project led by Zema Coders to help junior d
 ### Backend:
 - Node.js + Express.js (Server-side framework)
 - MySQL (Relational Database)
-- Sequelize (ORM for MySQL)
+- MySQL2 (For executng raw SQL queries)
 - Passport.js (Authentication)
 ### **Other Tools**:
 - Git & GitHub (Version Control)
@@ -63,4 +63,4 @@ We follow a clear commit message convention:
 - Use clear commit messages
 
 ## Let's Build Together!
-This project is an ongoing learning experience. If you have any questions, reach out on our Zema Coders group!
+This project is an ongoing learning experience. If you have any questions, reach out on our Zema Coders group!!
