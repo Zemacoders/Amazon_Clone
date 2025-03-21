@@ -1,1 +1,18 @@
 @import "tailwindcss";
+
+@layer utilities {
+  .bg-secondary {
+    background-color: #131a22;
+  }
+  .bg-primary {
+    background-color: #ff9900;
+  }
+  .text-primary {
+    color: #ff9900;
+  }
+
+  .text-secondary {
+    color: #131a22;
+
+  }
+}
