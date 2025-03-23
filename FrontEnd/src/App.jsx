@@ -1,12 +1,15 @@
+import Footer from "./components/Footer";
+import Header from "./components/header/Header";
 import Routers from "./routers/Routers";
 
+
 function App() {
-  return (
+  return(
     <>
-      <h1 className="text-center  text-4xl text-red-500">Amazon Clone</h1>
-      <Routers />
+    <Header/>
+    <Routers />
+    <Footer/>
     </>
-  );
-  return;
+  )
 }
 export default App;

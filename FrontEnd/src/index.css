@@ -1,1 +1,127 @@
 @import "tailwindcss";
+
+@layer utilities {
+  .bg-secondary {
+    background-color: #131a22;
+  }
+  .bg-primary {
+    background-color: #ff9900;
+  }
+  .text-primary {
+    color: #ff9900;
+  }
+
+  .text-secondary {
+    color: #131a22;
+
+  }
+}
+
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+div {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+p {
+  margin: 10px 0;
+  color: #555;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Cart Step Styles */
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-item button {
+  background-color: #dc3545;
+}
+
+.cart-item button:hover {
+  background-color: #c82333;
+}
+
+/* Payment Step Styles */
+.payment-inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Address Step Styles */
+.address-inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Done Step Styles */
+.order-summary {
+  margin-top: 20px;
+}
+
+.order-summary p {
+  margin: 5px 0;
+}
+
+.continue-shopping {
+  background-color: #28a745;
+}
+
+.continue-shopping:hover {
+  background-color: #218838;
+}
+
+/* Navigation Buttons */
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
