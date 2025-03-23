@@ -1,153 +1,146 @@
 import React, { useState } from "react";
 
 const Cart = () => {
-  const [step, setStep] = useState(1);
   const [cartItems, setCartItems] = useState([
-    { id: 1, name: "Product 1", quantity: 2, price: 20 },
-    { id: 2, name: "Product 2", quantity: 1, price: 30 },
+    { id: 1, name: "Lipstick", price: 15.99, quantity: 1 },
+    { id: 2, name: "Hair Shampoo", price: 10.98, quantity: 1 },
+    { id: 3, name: "Samsung", price: 499.99, quantity: 1 },
   ]);
-  const [paymentDetails, setPaymentDetails] = useState({
-    cardNumber: "",
-    expiry: "",
-    cvv: "",
-  });
-  const [shippingAddress, setShippingAddress] = useState({
-    name: "",
-    address: "",
-    city: "",
-    state: "",
-    zip: "",
-    country: "",
-  });
 
-  const handleNext = () => setStep(step + 1);
-  const handleBack = () => setStep(step - 1);
-
-  const handlePaymentChange = (e) => {
-    setPaymentDetails({ ...paymentDetails, [e.target.name]: e.target.value });
+  const handleQuantityChange = (id, change) => {
+    setCartItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === id
+          ? { ...item, quantity: Math.max(1, item.quantity + change) }
+          : item
+      )
+    );
   };
 
-  const handleAddressChange = (e) => {
-    setShippingAddress({ ...shippingAddress, [e.target.name]: e.target.value });
+  const handleRemoveItem = (id) => {
+    setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
   };
 
-  const renderStep = () => {
-    switch (step) {
-      case 1:
-        return (
-          <div>
-            <h2>Cart</h2>
-            {cartItems.map((item) => (
-              <div key={item.id}>
-                <p>
-                  {item.name} - {item.quantity} x ${item.price}
-                </p>
-                <button
-                  onClick={() =>
-                    setCartItems(cartItems.filter((i) => i.id !== item.id))
-                  }
-                >
-                  Remove
-                </button>
-              </div>
-            ))}
-            <button onClick={handleNext}>Proceed to Payment</button>
-          </div>
-        );
-      case 2:
-        return (
-          <div>
-            <h2>Payment</h2>
-            <input
-              type="text"
-              name="cardNumber"
-              placeholder="Card Number"
-              onChange={handlePaymentChange}
-            />
-            <input
-              type="text"
-              name="expiry"
-              placeholder="Expiry Date"
-              onChange={handlePaymentChange}
-            />
-            <input
-              type="text"
-              name="cvv"
-              placeholder="CVV"
-              onChange={handlePaymentChange}
-            />
-            <button onClick={handleBack}>Back</button>
-            <button onClick={handleNext}>Proceed to Address</button>
-          </div>
-        );
-      case 3:
-        return (
-          <div>
-            <h2>Address</h2>
-            <input
-              type="text"
-              name="name"
-              placeholder="Name"
-              onChange={handleAddressChange}
-            />
-            <input
-              type="text"
-              name="address"
-              placeholder="Address"
-              onChange={handleAddressChange}
-            />
-            <input
-              type="text"
-              name="city"
-              placeholder="City"
-              onChange={handleAddressChange}
-            />
-            <input
-              type="text"
-              name="state"
-              placeholder="State"
-              onChange={handleAddressChange}
-            />
-            <input
-              type="text"
-              name="zip"
-              placeholder="ZIP Code"
-              onChange={handleAddressChange}
-            />
-            <input
-              type="text"
-              name="country"
-              placeholder="Country"
-              onChange={handleAddressChange}
-            />
-            <button onClick={handleBack}>Back</button>
-            <button onClick={handleNext}>Proceed to Done</button>
-          </div>
-        );
-      case 4:
-        return (
-          <div>
-            <h2>Thank you for your purchase!</h2>
-            <p>Order Summary:</p>
-            {cartItems.map((item) => (
-              <p key={item.id}>
-                {item.name} - {item.quantity} x ${item.price}
-              </p>
-            ))}
-            <p>
-              Shipping to: {shippingAddress.name}, {shippingAddress.address},{" "}
-              {shippingAddress.city}, {shippingAddress.state},{" "}
-              {shippingAddress.zip}, {shippingAddress.country}
-            </p>
-            <button onClick={() => setStep(1)}>Continue Shopping</button>
-          </div>
-        );
-      default:
-        return <div>Invalid step</div>;
-    }
+  const calculateTotal = () => {
+    return cartItems
+      .reduce((total, item) => total + item.price * item.quantity, 0)
+      .toFixed(2);
   };
 
-  return <div>{renderStep()}</div>;
+  return (
+    <div style={styles.container}>
+      <h2 style={styles.heading}>Cart</h2>
+      <div style={styles.table}>
+        <div style={styles.tableRow}>
+          <div style={styles.tableHeader}>Items</div>
+          <div style={styles.tableHeader}>Price</div>
+          <div style={styles.tableHeader}>Quantity</div>
+          <div style={styles.tableHeader}>Total</div>
+        </div>
+        {cartItems.map((item) => (
+          <div key={item.id} style={styles.tableRow}>
+            <div style={styles.tableCell}>{item.name}</div>
+            <div style={styles.tableCell}>{item.price} Birr</div>
+            <div style={styles.tableCell}>
+              <button
+                style={styles.quantityButton}
+                onClick={() => handleQuantityChange(item.id, -1)}
+              >
+                -
+              </button>
+              {item.quantity}
+              <button
+                style={styles.quantityButton}
+                onClick={() => handleQuantityChange(item.id, 1)}
+              >
+                +
+              </button>
+            </div>
+            <div style={styles.tableCell}>
+              {(item.price * item.quantity).toFixed(2)} Birr
+            </div>
+            <button
+              style={styles.removeButton}
+              onClick={() => handleRemoveItem(item.id)}
+            >
+              Remove
+            </button>
+          </div>
+        ))}
+      </div>
+      <div style={styles.totalContainer}>
+        <h3>Total: {calculateTotal()} Birr</h3>
+        <button style={styles.checkoutButton}>Check out</button>
+      </div>
+    </div>
+  );
+};
+
+const styles = {
+  container: {
+    padding: "20px",
+    maxWidth: "800px",
+    margin: "0 auto",
+    backgroundColor: "#fff",
+    borderRadius: "8px",
+    boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
+  },
+  heading: {
+    fontSize: "24px",
+    marginBottom: "20px",
+    color: "#333",
+  },
+  table: {
+    width: "100%",
+    borderCollapse: "collapse",
+  },
+  tableRow: {
+    display: "flex",
+    justifyContent: "space-between",
+    padding: "10px 0",
+    borderBottom: "1px solid #eee",
+  },
+  tableHeader: {
+    fontWeight: "bold",
+    flex: 1,
+    textAlign: "center",
+  },
+  tableCell: {
+    flex: 1,
+    textAlign: "center",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  quantityButton: {
+    padding: "5px 10px",
+    margin: "0 5px",
+    backgroundColor: "#007bff",
+    color: "#fff",
+    border: "none",
+    borderRadius: "4px",
+    cursor: "pointer",
+  },
+  removeButton: {
+    padding: "5px 10px",
+    backgroundColor: "#dc3545",
+    color: "#fff",
+    border: "none",
+    borderRadius: "4px",
+    cursor: "pointer",
+  },
+  totalContainer: {
+    marginTop: "20px",
+    textAlign: "right",
+  },
+  checkoutButton: {
+    padding: "10px 20px",
+    backgroundColor: "#28a745",
+    color: "#fff",
+    border: "none",
+    borderRadius: "4px",
+    cursor: "pointer",
+  },
 };
 
 export default Cart;
