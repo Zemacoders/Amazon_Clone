@@ -28,7 +28,7 @@ export default function SideBar({open , setOpen}) {
             fontWeight: 'bold',
             backgroundColor: 'white',
       }}>Shope by Categories</ListSubheader> {/* Header for the first list */}
-        {category.map((text, index) => (
+        {category.map((text) => (
           <ListItem key={text}  sx={{color:'#444'}} disablePadding>
             <ListItemButton >            
               <ListItemText primary={text} />
