@@ -11,6 +11,9 @@ const Signup = React.lazy(() => import("../pages/Signup"));
 const Login = React.lazy(() => import("../pages/Login"));
 const Cart = React.lazy(() => import("../pages/Cart"));
 const Home = React.lazy(() => import("../pages/Home"));
+const Search = React.lazy(() => import("../pages/Search"));
+const Products = React.lazy(() => import("../pages/Products"));
+
 
 const Routers = () => {
   return (
@@ -24,6 +27,8 @@ const Routers = () => {
         <Route path="checkout" element={<Checkout />} />
         <Route path="category" element={<Category />} />
         <Route path="favorite" element={<Favorite />} />
+        <Route path="products" element={<Products />} />
+        <Route path="search" element={<Search />} />
       </Routes>
     </Suspense>
   );
