@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {slider} from "../assets/heroSlideData";
+import { Link } from "react-router-dom";
 const HeroSlider = () => {
     const [current, setCurrent] = useState(0);
 
@@ -22,7 +23,7 @@ const HeroSlider = () => {
                                 {slide.mainHeading}
                             </h1>
                             <button className="bg-primary hover:scale-110 text-white font-medium px-6 py-3 w-fit transition">
-                                {slide.button}
+                               <Link to='products'> {slide.button}</Link>
                             </button>
                         </div>
                     </div>

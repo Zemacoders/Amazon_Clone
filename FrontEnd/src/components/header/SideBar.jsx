@@ -4,15 +4,21 @@ import Drawer from '@mui/material/Drawer';
 import { IoPerson } from "react-icons/io5";
 import { List, ListItem, ListItemButton, ListItemText, ListItemIcon, Divider, ListSubheader } from '@mui/material';
 import data from '../../amazon_products.json'
+import { setCategory } from '../../redux/slices/categorySlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 export default function SideBar({open , setOpen}) {
     const category = data[0].categories;
+    const dispatch = useDispatch();
+    const categoryname = useSelector(state => state.category.categories);
 
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
+
+  console.log(categoryname)
 
   const DrawerList = (
     <Box sx={{ width: 300 }} role="presentation" onClick={toggleDrawer(false)}>
@@ -29,7 +35,7 @@ export default function SideBar({open , setOpen}) {
             backgroundColor: 'white',
       }}>Shope by Categories</ListSubheader> {/* Header for the first list */}
         {category.map((text, index) => (
-          <ListItem key={text}  sx={{color:'#444'}} disablePadding>
+          <ListItem key={index}  sx={{color:'#444'}} disablePadding onClick={()=>dispatch(setCategory(text))}>
             <ListItemButton >            
               <ListItemText primary={text} />
               <ListItemIcon>

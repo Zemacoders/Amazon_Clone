@@ -91,7 +91,7 @@ const Home = () => {
           {
             featuredProducts.length > 0 && (
 
-              featuredProducts.map((product, index) => (
+              featuredProducts.slice(0,10).map((product, index) => (
                 <ProductCard key={index} product={product} />
               )
               )
